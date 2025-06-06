@@ -100,7 +100,7 @@ export default function ScanToken() {
       <main className="w-full flex flex-col items-center p-4 gap-4">
         <div className="text-center space-y-2 w-full">
           <div className="absolute inset-0 -z-10 bg-[radial-gradient(ellipse_at_center,_var(--tw-gradient-stops))] from-[#00ff00]/20 via-transparent to-transparent blur-3xl"></div>
-          <h2 className="text-xl font-extrabold tracking-tight bg-gradient-to-r from-[#00ff00] via-[#00ffff] to-[#ff00ff] bg-clip-text text-transparent">
+          <h2 className="text-xl font-extrabold pixelify-sans tracking-tight bg-gradient-to-r from-[#00ff00] via-[#00ffff] to-[#ff00ff] bg-clip-text text-transparent">
             SCAN YOUR WALLET. NUKE THE THREATS.
           </h2>
           <p className="text-sm text-[#00ff00] leading-relaxed">
