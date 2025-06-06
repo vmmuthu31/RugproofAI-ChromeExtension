@@ -146,7 +146,7 @@ export default function ScanToken() {
         {activeTab === "wallet" && (
           <div className="w-full space-y-4">
             <div>
-              <p className="text-md text-[#00ff00] leading-relaxed text-center pixelify-sans">
+              <p className="text-lg text-[#00ff00] leading-relaxed text-center pixelify-sans">
                 SCAN YOUR WALLET. NUKE THE THREATS.
               </p>
               <p className="text-sm text-center text-[#00ff00] leading-relaxed pixelify-sans">

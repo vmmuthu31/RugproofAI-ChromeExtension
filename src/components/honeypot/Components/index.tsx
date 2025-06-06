@@ -287,9 +287,8 @@ function HoneyPot() {
     <Suspense>
       <div className="flex flex-col items-center bg-black text-white w-[390px] max-h-[800px] overflow-y-auto">
         <main className="w-full flex flex-col items-center pl-2 pr-4 gap-4">
-          <div className="text-center space-y-2 w-full">
-            <div className="absolute inset-0 -z-10 bg-[radial-gradient(ellipse_at_center,_var(--tw-gradient-stops))] from-[#ffa500]/20 via-transparent to-transparent blur-3xl"></div>
-            <h2 className="text-xl font-extrabold pixelify-sans tracking-tight bg-gradient-to-r from-[#ffa500] via-[#ffcc00] to-[#ff8800] bg-clip-text text-transparent">
+          <div className="text-center  w-full">
+            <h2 className="text-lg font-extrabold pixelify-sans tracking-tight bg-gradient-to-r from-[#ffa500] via-[#ffcc00] to-[#ff8800] bg-clip-text text-transparent">
               TOKEN SAFETY CHECK
             </h2>
             <p className="text-sm text-[#ffa500] leading-relaxed pixelify-sans">
