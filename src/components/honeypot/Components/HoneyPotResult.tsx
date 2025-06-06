@@ -1,5 +1,4 @@
-import { pixelFont, pixelMonoFont } from "@/lib/font";
-import { getExplorerUrl } from "@/lib/utils/getExplorerUrl";
+import { getExplorerUrl } from "@/lib/services/goldrush";
 import { AlertTriangle, CheckCircle, ExternalLink, Info } from "lucide-react";
 
 function HoneyPotResult({
@@ -37,18 +36,16 @@ function HoneyPotResult({
   detectedChain?: string | null;
 }) {
   return (
-    <div className="w-full max-w-2xl mt-6 animate-fade-in">
+    <div className="w-full animate-fade-in">
       {/* Token Summary Card */}
-      <div className="p-4 sm:p-6 backdrop-blur-lg bg-black/50 rounded-2xl border border-[#ffa500]/30 shadow-[0_0_15px_rgba(255,165,0,0.2)] overflow-hidden relative mb-6">
+      <div className="p-3 backdrop-blur-lg bg-black/50 rounded-xl border border-[#ffa500]/30 shadow-[0_0_15px_rgba(255,165,0,0.2)] overflow-hidden relative mb-3">
         <div className="absolute inset-0 -z-10 bg-[radial-gradient(ellipse_at_top_right,_var(--tw-gradient-stops))] from-[#ffa500]/10 via-transparent to-transparent"></div>
 
-        <div className="flex items-center gap-2 mb-4 sm:mb-6">
-          <div className="h-10 w-10 sm:h-12 sm:w-12 rounded-lg bg-[#ffa500]/10 flex items-center justify-center">
-            <AlertTriangle className="h-6 w-6 sm:h-7 sm:w-7 text-[#ffa500]" />
+        <div className="flex items-center gap-2 mb-2">
+          <div className="h-6 w-6 rounded-lg bg-[#ffa500]/10 flex items-center justify-center">
+            <AlertTriangle className="h-4 w-4 text-[#ffa500]" />
           </div>
-          <h3
-            className={`${pixelFont.className} text-xl sm:text-2xl md:text-3xl font-bold text-[#ffa500]`}
-          >
+          <h3 className="text-base font-bold text-[#ffa500] pixelify-sans">
             HONEYPOT ANALYSIS
           </h3>
         </div>
@@ -56,21 +53,20 @@ function HoneyPotResult({
         <div className="flex flex-col md:flex-row gap-4 sm:gap-6">
           <div className="space-y-3 sm:space-y-4 text-[#00ffff] flex-1">
             <div className="space-y-1">
-              <span
-                className={`${pixelMonoFont.className} text-lg sm:text-xl text-[#ffa500]`}
-              >
+              <span className={` text-lg sm:text-xl text-[#ffa500]`}>
                 TOKEN
               </span>
               <div className="flex items-center gap-2">
                 <span
-                  className={`${pixelMonoFont.className} text-base sm:text-lg md:text-xl font-mono bg-black/50 py-2 px-3 rounded-lg truncate border border-[#ffa500]/20`}
+                  className={` text-base sm:text-lg md:text-xl font-mono bg-black/50 py-2 px-3 rounded-lg truncate border border-[#ffa500]/20`}
                 >
                   {honeypotResult.token.address}
                 </span>
                 <a
-                  href={`${getExplorerUrl(detectedChain || "1")}/address/${
+                  href={`${getExplorerUrl(
+                    detectedChain || "1",
                     honeypotResult.token.address
-                  }`}
+                  )}/address/${honeypotResult.token.address}`}
                   target="_blank"
                   rel="noopener noreferrer"
                   className="inline-flex items-center justify-center h-8 w-8 sm:h-9 sm:w-9 rounded-full bg-black/50 text-[#ffa500] hover:bg-black/70 hover:text-[#ffcc00] transition-colors border border-[#ffa500]/30"
@@ -81,16 +77,12 @@ function HoneyPotResult({
             </div>
 
             <div className="space-y-1">
-              <span
-                className={`${pixelMonoFont.className} text-base sm:text-lg text-[#ffa500]`}
-              >
+              <span className={` text-base sm:text-lg text-[#ffa500]`}>
                 TOKEN INFO
               </span>
               <div className="flex items-center gap-2">
                 <div className="flex items-center gap-1.5 bg-black/50 py-2 px-3 rounded-lg border border-[#ffa500]/20">
-                  <span
-                    className={`${pixelMonoFont.className} text-base sm:text-lg font-medium`}
-                  >
+                  <span className={` text-base sm:text-lg font-medium`}>
                     {honeypotResult.token.name} ({honeypotResult.token.symbol})
                   </span>
                 </div>
@@ -98,13 +90,11 @@ function HoneyPotResult({
             </div>
 
             <div className="space-y-1">
-              <span
-                className={`${pixelMonoFont.className} text-base sm:text-lg text-[#ffa500]`}
-              >
+              <span className={` text-base sm:text-lg text-[#ffa500]`}>
                 HOLDERS
               </span>
               <div
-                className={`${pixelMonoFont.className} text-base sm:text-lg bg-black/50 py-2 px-3 rounded-lg border border-[#ffa500]/20`}
+                className={` text-base sm:text-lg bg-black/50 py-2 px-3 rounded-lg border border-[#ffa500]/20`}
               >
                 {honeypotResult.token.totalHolders.toLocaleString()}
               </div>
@@ -122,7 +112,7 @@ function HoneyPotResult({
               >
                 <div className="flex-1 flex items-center justify-center">
                   <div
-                    className={`${pixelFont.className} text-3xl font-bold ${
+                    className={`text-3xl font-bold ${
                       honeypotResult?.honeypotResult?.isHoneypot
                         ? "text-[#ff0000] glow-red-sm"
                         : "text-[#00ff00] glow-green-sm"
@@ -132,11 +122,7 @@ function HoneyPotResult({
                   </div>
                 </div>
                 <div className="text-center mt-2">
-                  <div
-                    className={`${pixelMonoFont.className} text-sm text-[#ffa500]`}
-                  >
-                    HONEYPOT
-                  </div>
+                  <div className={` text-sm text-[#ffa500]`}>HONEYPOT</div>
                 </div>
               </div>
             </div>
@@ -144,18 +130,12 @@ function HoneyPotResult({
             <div className="flex flex-col flex-1 md:flex-none">
               <div className="flex-1 md:w-28 h-full flex flex-col p-3 rounded-2xl border border-[#ffa500]/30 bg-black/70">
                 <div className="flex-1 flex items-center justify-center">
-                  <div
-                    className={`${pixelFont.className} text-lg font-bold text-[#ffa500]`}
-                  >
+                  <div className={`text-lg font-bold text-[#ffa500]`}>
                     {honeypotResult?.simulationResult?.buyTax.toFixed(1)}%
                   </div>
                 </div>
                 <div className="text-center mt-2">
-                  <div
-                    className={`${pixelMonoFont.className} text-sm text-[#ffa500]`}
-                  >
-                    BUY TAX
-                  </div>
+                  <div className={` text-sm text-[#ffa500]`}>BUY TAX</div>
                 </div>
               </div>
             </div>
@@ -163,18 +143,12 @@ function HoneyPotResult({
             <div className="flex flex-col flex-1 md:flex-none">
               <div className="flex-1 md:w-28 h-full flex flex-col p-3 rounded-2xl border border-[#ffa500]/30 bg-black/70">
                 <div className="flex-1 flex items-center justify-center">
-                  <div
-                    className={`${pixelFont.className} text-lg font-bold text-[#ffa500]`}
-                  >
+                  <div className={`text-lg font-bold text-[#ffa500]`}>
                     {honeypotResult?.simulationResult?.sellTax.toFixed(1)}%
                   </div>
                 </div>
                 <div className="text-center mt-2">
-                  <div
-                    className={`${pixelMonoFont.className} text-sm text-[#ffa500]`}
-                  >
-                    SELL TAX
-                  </div>
+                  <div className={` text-sm text-[#ffa500]`}>SELL TAX</div>
                 </div>
               </div>
             </div>
@@ -213,9 +187,7 @@ function HoneyPotResult({
           </div>
           <div>
             <h4
-              className={`${
-                pixelMonoFont.className
-              } font-semibold text-base sm:text-lg md:text-xl ${
+              className={`font-semibold text-base sm:text-lg md:text-xl ${
                 honeypotResult?.honeypotResult?.isHoneypot
                   ? "text-[#ff5555]"
                   : honeypotResult?.summary?.risk === "low" ||
@@ -232,7 +204,7 @@ function HoneyPotResult({
                 : "SAFE: NO HONEYPOT DETECTED"}
             </h4>
             <p
-              className={`${pixelMonoFont.className} text-base sm:text-lg ${
+              className={` text-base sm:text-lg ${
                 honeypotResult?.honeypotResult?.isHoneypot
                   ? "text-[#ff8888]"
                   : honeypotResult?.summary?.risk === "low" ||
@@ -255,9 +227,7 @@ function HoneyPotResult({
 
       {/* Details Section */}
       <div className="p-5 sm:p-7 backdrop-blur-lg bg-black/50 rounded-2xl border border-[#ffa500]/30 shadow-[0_0_15px_rgba(255,165,0,0.2)] overflow-hidden">
-        <h3
-          className={`${pixelFont.className} text-xl sm:text-2xl font-bold text-[#ffa500] mb-5`}
-        >
+        <h3 className={`text-xl sm:text-2xl font-bold text-[#ffa500] mb-5`}>
           DETAILED ANALYSIS
         </h3>
 
@@ -265,44 +235,32 @@ function HoneyPotResult({
           {/* Tax Information */}
           <div className="p-4 sm:p-5 bg-black/70 rounded-xl border border-[#ffa500]/20">
             <h4
-              className={`${pixelMonoFont.className} text-lg sm:text-xl font-medium text-[#ffa500] mb-3`}
+              className={` text-lg sm:text-xl font-medium text-[#ffa500] mb-3`}
             >
               TAX INFORMATION
             </h4>
             <div className="grid grid-cols-3 gap-3 sm:gap-5">
               <div className="p-3 sm:p-4 bg-black/50 rounded-lg border border-[#ffa500]/10 text-center">
-                <div
-                  className={`${pixelMonoFont.className} text-lg sm:text-xl font-bold text-[#00ffff]`}
-                >
+                <div className={` text-lg sm:text-xl font-bold text-[#00ffff]`}>
                   {honeypotResult?.simulationResult?.buyTax}%
                 </div>
-                <div
-                  className={`${pixelMonoFont.className} text-base sm:text-lg text-[#ffa500]`}
-                >
+                <div className={` text-base sm:text-lg text-[#ffa500]`}>
                   Buy Tax
                 </div>
               </div>
               <div className="p-3 sm:p-4 bg-black/50 rounded-lg border border-[#ffa500]/10 text-center">
-                <div
-                  className={`${pixelMonoFont.className} text-lg sm:text-xl font-bold text-[#00ffff]`}
-                >
+                <div className={` text-lg sm:text-xl font-bold text-[#00ffff]`}>
                   {honeypotResult?.simulationResult?.sellTax}%
                 </div>
-                <div
-                  className={`${pixelMonoFont.className} text-base sm:text-lg text-[#ffa500]`}
-                >
+                <div className={` text-base sm:text-lg text-[#ffa500]`}>
                   Sell Tax
                 </div>
               </div>
               <div className="p-3 sm:p-4 bg-black/50 rounded-lg border border-[#ffa500]/10 text-center">
-                <div
-                  className={`${pixelMonoFont.className} text-lg sm:text-xl font-bold text-[#00ffff]`}
-                >
+                <div className={` text-lg sm:text-xl font-bold text-[#00ffff]`}>
                   {honeypotResult?.simulationResult?.transferTax}%
                 </div>
-                <div
-                  className={`${pixelMonoFont.className} text-base sm:text-lg text-[#ffa500]`}
-                >
+                <div className={` text-base sm:text-lg text-[#ffa500]`}>
                   Transfer Tax
                 </div>
               </div>
@@ -312,32 +270,24 @@ function HoneyPotResult({
           {/* Gas Information */}
           <div className="p-4 sm:p-5 bg-black/70 rounded-xl border border-[#ffa500]/20">
             <h4
-              className={`${pixelMonoFont.className} text-lg sm:text-xl font-medium text-[#ffa500] mb-3`}
+              className={` text-lg sm:text-xl font-medium text-[#ffa500] mb-3`}
             >
               GAS INFORMATION
             </h4>
             <div className="grid grid-cols-2 gap-3 sm:gap-5">
               <div className="p-3 sm:p-4 bg-black/50 rounded-lg border border-[#ffa500]/10 text-center">
-                <div
-                  className={`${pixelMonoFont.className} text-lg sm:text-xl font-bold text-[#00ffff]`}
-                >
+                <div className={` text-lg sm:text-xl font-bold text-[#00ffff]`}>
                   {honeypotResult?.simulationResult?.buyGas}
                 </div>
-                <div
-                  className={`${pixelMonoFont.className} text-base sm:text-lg text-[#ffa500]`}
-                >
+                <div className={` text-base sm:text-lg text-[#ffa500]`}>
                   Buy Gas
                 </div>
               </div>
               <div className="p-3 sm:p-4 bg-black/50 rounded-lg border border-[#ffa500]/10 text-center">
-                <div
-                  className={`${pixelMonoFont.className} text-lg sm:text-xl font-bold text-[#00ffff]`}
-                >
+                <div className={` text-lg sm:text-xl font-bold text-[#00ffff]`}>
                   {honeypotResult?.simulationResult?.sellGas}
                 </div>
-                <div
-                  className={`${pixelMonoFont.className} text-base sm:text-lg text-[#ffa500]`}
-                >
+                <div className={` text-base sm:text-lg text-[#ffa500]`}>
                   Sell Gas
                 </div>
               </div>
@@ -348,21 +298,17 @@ function HoneyPotResult({
           {honeypotResult.contractCode && (
             <div className="p-4 sm:p-5 bg-black/70 rounded-xl border border-[#ffa500]/20">
               <h4
-                className={`${pixelMonoFont.className} text-lg sm:text-xl font-medium text-[#ffa500] mb-3`}
+                className={` text-lg sm:text-xl font-medium text-[#ffa500] mb-3`}
               >
                 CONTRACT VERIFICATION
               </h4>
               <div className="space-y-3">
                 <div className="flex justify-between items-center p-3 sm:p-4 bg-black/50 rounded-lg border border-[#ffa500]/10">
-                  <span
-                    className={`${pixelMonoFont.className} text-base sm:text-lg text-[#ffa500]`}
-                  >
+                  <span className={` text-base sm:text-lg text-[#ffa500]`}>
                     Open Source:
                   </span>
                   <span
-                    className={`${
-                      pixelMonoFont.className
-                    } text-base sm:text-lg ${
+                    className={` text-base sm:text-lg ${
                       honeypotResult?.contractCode?.openSource
                         ? "text-[#00ff00]"
                         : "text-[#ff0000]"
@@ -372,15 +318,11 @@ function HoneyPotResult({
                   </span>
                 </div>
                 <div className="flex justify-between items-center p-3 sm:p-4 bg-black/50 rounded-lg border border-[#ffa500]/10">
-                  <span
-                    className={`${pixelMonoFont.className} text-base sm:text-lg text-[#ffa500]`}
-                  >
+                  <span className={` text-base sm:text-lg text-[#ffa500]`}>
                     Root Open Source:
                   </span>
                   <span
-                    className={`${
-                      pixelMonoFont.className
-                    } text-base sm:text-lg ${
+                    className={`text-base sm:text-lg ${
                       honeypotResult?.contractCode?.rootOpenSource
                         ? "text-[#00ff00]"
                         : "text-[#ff0000]"
@@ -392,15 +334,11 @@ function HoneyPotResult({
                   </span>
                 </div>
                 <div className="flex justify-between items-center p-3 sm:p-4 bg-black/50 rounded-lg border border-[#ffa500]/10">
-                  <span
-                    className={`${pixelMonoFont.className} text-base sm:text-lg text-[#ffa500]`}
-                  >
+                  <span className={` text-base sm:text-lg text-[#ffa500]`}>
                     Is Proxy:
                   </span>
                   <span
-                    className={`${
-                      pixelMonoFont.className
-                    } text-base sm:text-lg ${
+                    className={` text-base sm:text-lg ${
                       honeypotResult?.contractCode?.isProxy
                         ? "text-[#ff5500]"
                         : "text-[#00ff00]"
@@ -410,15 +348,11 @@ function HoneyPotResult({
                   </span>
                 </div>
                 <div className="flex justify-between items-center p-3 sm:p-4 bg-black/50 rounded-lg border border-[#ffa500]/10">
-                  <span
-                    className={`${pixelMonoFont.className} text-base sm:text-lg text-[#ffa500]`}
-                  >
+                  <span className={` text-base sm:text-lg text-[#ffa500]`}>
                     Has Proxy Calls:
                   </span>
                   <span
-                    className={`${
-                      pixelMonoFont.className
-                    } text-base sm:text-lg ${
+                    className={` text-base sm:text-lg ${
                       honeypotResult?.contractCode?.hasProxyCalls
                         ? "text-[#ff5500]"
                         : "text-[#00ff00]"
@@ -435,9 +369,7 @@ function HoneyPotResult({
           <div className="p-4 sm:p-5 bg-[#ffaa00]/10 rounded-xl border border-[#ffaa00]/30 mt-5">
             <div className="flex gap-4 items-start">
               <Info className="h-6 w-6 text-[#ffaa00] flex-shrink-0 mt-0.5" />
-              <p
-                className={`${pixelMonoFont.className} text-base sm:text-lg text-[#ffaa00]`}
-              >
+              <p className={` text-base sm:text-lg text-[#ffaa00]`}>
                 This analysis is provided for informational purposes only.
                 Always do your own research (DYOR) before investing. RugProof is
                 not responsible for any trading decisions made based on this

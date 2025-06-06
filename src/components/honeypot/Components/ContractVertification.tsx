@@ -1,4 +1,3 @@
-import { pixelFont, pixelMonoFont } from "@/lib/font";
 import { AlertTriangle, CheckCircle, Info } from "lucide-react";
 
 function ContractVertification({
@@ -25,7 +24,7 @@ function ContractVertification({
             <CheckCircle className="h-5 w-5 sm:h-6 sm:w-6 text-[#ffa500]" />
           </div>
           <h3
-            className={`${pixelFont.className} text-lg sm:text-xl md:text-2xl font-bold text-[#ffa500]`}
+            className={` text-lg sm:text-xl md:text-2xl font-bold text-[#ffa500]`}
           >
             CONTRACT VERIFICATION
           </h3>
@@ -35,20 +34,18 @@ function ContractVertification({
           {/* Summary */}
           <div className="p-3 sm:p-4 bg-black/70 rounded-xl border border-[#ffa500]/20">
             <h4
-              className={`${pixelMonoFont.className} text-base sm:text-lg font-medium text-[#ffa500] mb-2`}
+              className={` text-base sm:text-lg font-medium text-[#ffa500] mb-2`}
             >
               SUMMARY
             </h4>
             <div className="grid grid-cols-1 sm:grid-cols-2 gap-2 sm:gap-4">
               <div className="p-2 sm:p-3 bg-black/50 rounded-lg border border-[#ffa500]/10">
                 <div className="flex justify-between">
-                  <span
-                    className={`${pixelMonoFont.className} text-sm text-[#ffa500]`}
-                  >
+                  <span className={` text-sm text-[#ffa500]`}>
                     Is Contract:
                   </span>
                   <span
-                    className={`${pixelMonoFont.className} text-sm ${
+                    className={` text-sm ${
                       contractResult.isContract
                         ? "text-[#00ff00]"
                         : "text-[#ff0000]"
@@ -60,13 +57,11 @@ function ContractVertification({
               </div>
               <div className="p-2 sm:p-3 bg-black/50 rounded-lg border border-[#ffa500]/10">
                 <div className="flex justify-between">
-                  <span
-                    className={`${pixelMonoFont.className} text-sm text-[#ffa500]`}
-                  >
+                  <span className={` text-sm text-[#ffa500]`}>
                     Root Open Source:
                   </span>
                   <span
-                    className={`${pixelMonoFont.className} text-sm ${
+                    className={` text-sm ${
                       contractResult.isRootOpenSource
                         ? "text-[#00ff00]"
                         : "text-[#ff0000]"
@@ -81,13 +76,11 @@ function ContractVertification({
                   <>
                     <div className="p-2 sm:p-3 bg-black/50 rounded-lg border border-[#ffa500]/10">
                       <div className="flex justify-between">
-                        <span
-                          className={`${pixelMonoFont.className} text-sm text-[#ffa500]`}
-                        >
+                        <span className={` text-sm text-[#ffa500]`}>
                           All Open Source:
                         </span>
                         <span
-                          className={`${pixelMonoFont.className} text-sm ${
+                          className={` text-sm ${
                             contractResult?.summary?.isOpenSource
                               ? "text-[#00ff00]"
                               : "text-[#ff0000]"
@@ -99,13 +92,11 @@ function ContractVertification({
                     </div>
                     <div className="p-2 sm:p-3 bg-black/50 rounded-lg border border-[#ffa500]/10">
                       <div className="flex justify-between">
-                        <span
-                          className={`${pixelMonoFont.className} text-sm text-[#ffa500]`}
-                        >
+                        <span className={` text-sm text-[#ffa500]`}>
                           Has Proxy Calls:
                         </span>
                         <span
-                          className={`${pixelMonoFont.className} text-sm ${
+                          className={` text-sm ${
                             contractResult?.summary?.hasProxyCalls
                               ? "text-[#ff5500]"
                               : "text-[#00ff00]"
@@ -127,7 +118,7 @@ function ContractVertification({
             Object.keys(contractResult?.contractsOpenSource).length > 0 && (
               <div className="p-3 sm:p-4 bg-black/70 rounded-xl border border-[#ffa500]/20">
                 <h4
-                  className={`${pixelMonoFont.className} text-base sm:text-lg font-medium text-[#ffa500] mb-2`}
+                  className={` text-base sm:text-lg font-medium text-[#ffa500] mb-2`}
                 >
                   CONTRACTS OPEN SOURCE STATUS
                 </h4>
@@ -140,14 +131,12 @@ function ContractVertification({
                       >
                         <div className="flex justify-between flex-wrap gap-2">
                           <span
-                            className={`${pixelMonoFont.className} text-xs sm:text-sm text-[#00ffff] break-all`}
+                            className={` text-xs sm:text-sm text-[#00ffff] break-all`}
                           >
                             {address}
                           </span>
                           <span
-                            className={`${
-                              pixelMonoFont.className
-                            } text-xs sm:text-sm ${
+                            className={`} text-xs sm:text-sm ${
                               isOpenSource ? "text-[#00ff00]" : "text-[#ff0000]"
                             }`}
                           >
@@ -166,9 +155,7 @@ function ContractVertification({
             <div className="p-3 sm:p-4 bg-[#ffaa00]/10 rounded-xl border border-[#ffaa00]/30">
               <div className="flex gap-3 items-start">
                 <AlertTriangle className="h-5 w-5 text-[#ffaa00] flex-shrink-0 mt-0.5" />
-                <p
-                  className={`${pixelMonoFont.className} text-sm sm:text-base text-[#ffaa00]`}
-                >
+                <p className={` text-sm sm:text-base text-[#ffaa00]`}>
                   Full check could not be performed. This happens when the
                   simulation fails to get a complete call tree. Some information
                   may be missing.
@@ -181,9 +168,7 @@ function ContractVertification({
           <div className="p-4 sm:p-5 bg-[#ffaa00]/10 rounded-xl border border-[#ffaa00]/30 mt-5">
             <div className="flex gap-4 items-start">
               <Info className="h-6 w-6 text-[#ffaa00] flex-shrink-0 mt-0.5" />
-              <p
-                className={`${pixelMonoFont.className} text-base sm:text-lg text-[#ffaa00]`}
-              >
+              <p className={` text-base sm:text-lg text-[#ffaa00]`}>
                 This analysis is provided for informational purposes only.
                 Always do your own research (DYOR) before investing. RugProof is
                 not responsible for any trading decisions made based on this

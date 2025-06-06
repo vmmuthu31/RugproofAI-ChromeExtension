@@ -285,90 +285,93 @@ function HoneyPot() {
 
   return (
     <Suspense>
-      <div className="flex min-h-screen flex-col items-center bg-black text-white">
-        <main className="container mx-auto flex flex-1 flex-col items-center justify-center gap-6 sm:gap-10 p-3 sm:p-4 md:p-8">
-          <div className="text-center space-y-6 max-w-2xl relative">
+      <div className="flex flex-col items-center bg-black text-white w-[390px] max-h-[800px] overflow-y-auto">
+        <main className="w-full flex flex-col items-center pl-2 pr-4 gap-4">
+          <div className="text-center space-y-2 w-full">
             <div className="absolute inset-0 -z-10 bg-[radial-gradient(ellipse_at_center,_var(--tw-gradient-stops))] from-[#ffa500]/20 via-transparent to-transparent blur-3xl"></div>
-            <h2 className="pixelify-sans text-xl sm:text-3xl md:text-4xl font-extrabold tracking-tight bg-gradient-to-r from-[#ffa500] via-[#ffcc00] to-[#ff8800] bg-clip-text text-transparent glow-green-md animate-pulse-slow">
-              IS THIS TOKEN SAFE TO TRADE?
+            <h2 className="text-xl font-extrabold pixelify-sans tracking-tight bg-gradient-to-r from-[#ffa500] via-[#ffcc00] to-[#ff8800] bg-clip-text text-transparent">
+              TOKEN SAFETY CHECK
             </h2>
-            <p className="pixelify-sans text-xl sm:text-2xl md:text-3xl text-[#ffa500] leading-relaxed max-w-xl mx-auto animate-fade-in-up animation-delay-100">
-              Instantly verify any token contract across major chains. Avoid
-              scams. Trade with confidence.
+            <p className="text-sm text-[#ffa500] leading-relaxed pixelify-sans">
+              Verify tokens across major chains to avoid scams and trade safely
             </p>
           </div>
 
           {/* API Endpoint Tabs */}
-          <div className="w-full max-w-xl">
-            <div className="grid md:grid-cols-4 grid-cols-2 p-1 bg-black/80 border border-[#ffa500]/50 rounded-lg overflow-hidden mb-4">
-              <button
-                className={`flex-1 px-2 py-3 text-sm font-medium cursor-pointer rounded-md transition-colors flex items-center gap-1 ${
-                  endpoint === "honeypot"
-                    ? "bg-[#ffa500] text-black"
-                    : "text-[#ffa500] hover:bg-black/90"
-                }`}
-                onClick={() => {
-                  setEndpoint("honeypot");
-                  setContractAddress("");
-                  setError(null);
-                }}
-              >
-                <AlertTriangle className="h-4 w-4 sm:h-5 sm:w-5" />
-                <span className="whitespace-nowrap">Honeypot Check</span>
-              </button>
-              <button
-                className={`flex-1 px-2 py-3 text-sm font-medium cursor-pointer rounded-md transition-colors flex items-center gap-1 ${
-                  endpoint === "contract"
-                    ? "bg-[#ffa500] text-black"
-                    : "text-[#ffa500] hover:bg-black/90"
-                }`}
-                onClick={() => {
-                  setEndpoint("contract");
-                  setContractAddress("");
-                  setError(null);
-                }}
-              >
-                <CheckCircle className="h-4 w-4 sm:h-5 sm:w-5" />
-                <span className="whitespace-nowrap">Contract Verify</span>
-              </button>
-              <button
-                className={`flex-1 px-2 py-3 text-sm font-medium cursor-pointer rounded-md transition-colors flex items-center justify-center gap-1 ${
-                  endpoint === "pairs"
-                    ? "bg-[#ffa500] text-black"
-                    : "text-[#ffa500] hover:bg-black/90"
-                }`}
-                onClick={() => {
-                  setEndpoint("pairs");
-                  setContractAddress("");
-                  setError(null);
-                }}
-              >
-                <Search className="h-4 w-4 sm:h-5 sm:w-5" />
-                <span className="whitespace-nowrap">Get Pairs</span>
-              </button>
-              <button
-                className={`flex-1 px-2 py-3 text-sm font-medium cursor-pointer rounded-md transition-colors flex items-center justify-center gap-1 ${
-                  endpoint === "holders"
-                    ? "bg-[#ffa500] text-black"
-                    : "text-[#ffa500] hover:bg-black/90"
-                }`}
-                onClick={() => {
-                  setEndpoint("holders");
-                  setContractAddress("");
-                  setError(null);
-                }}
-              >
-                <Info className="h-4 w-4 sm:h-5 sm:w-5" />
-                <span className="whitespace-nowrap">Top Holders</span>
-              </button>
+          <div className="w-full">
+            <div className="grid grid-cols-2 gap-1 p-1 bg-black/80 border border-[#ffa500]/50 rounded-lg overflow-hidden mb-3">
+              <div className="col-span-2 grid grid-cols-2 gap-1">
+                <button
+                  className={`flex-1 px-2 py-2 text-xs font-medium cursor-pointer rounded-md transition-colors flex items-center justify-center gap-1 ${
+                    endpoint === "honeypot"
+                      ? "bg-[#ffa500] text-black"
+                      : "text-[#ffa500] hover:bg-black/90"
+                  }`}
+                  onClick={() => {
+                    setEndpoint("honeypot");
+                    setContractAddress("");
+                    setError(null);
+                  }}
+                >
+                  <AlertTriangle className="h-3 w-3" />
+                  <span>Honeypot</span>
+                </button>
+                <button
+                  className={`flex-1 px-2 py-2 text-xs font-medium cursor-pointer rounded-md transition-colors flex items-center justify-center gap-1 ${
+                    endpoint === "contract"
+                      ? "bg-[#ffa500] text-black"
+                      : "text-[#ffa500] hover:bg-black/90"
+                  }`}
+                  onClick={() => {
+                    setEndpoint("contract");
+                    setContractAddress("");
+                    setError(null);
+                  }}
+                >
+                  <CheckCircle className="h-3 w-3" />
+                  <span>Contract</span>
+                </button>
+              </div>
+              <div className="col-span-2 grid grid-cols-2 gap-1">
+                <button
+                  className={`flex-1 px-2 py-2 text-xs font-medium cursor-pointer rounded-md transition-colors flex items-center justify-center gap-1 ${
+                    endpoint === "pairs"
+                      ? "bg-[#ffa500] text-black"
+                      : "text-[#ffa500] hover:bg-black/90"
+                  }`}
+                  onClick={() => {
+                    setEndpoint("pairs");
+                    setContractAddress("");
+                    setError(null);
+                  }}
+                >
+                  <Search className="h-3 w-3" />
+                  <span>Pairs</span>
+                </button>
+                <button
+                  className={`flex-1 px-2 py-2 text-xs font-medium cursor-pointer rounded-md transition-colors flex items-center justify-center gap-1 ${
+                    endpoint === "holders"
+                      ? "bg-[#ffa500] text-black"
+                      : "text-[#ffa500] hover:bg-black/90"
+                  }`}
+                  onClick={() => {
+                    setEndpoint("holders");
+                    setContractAddress("");
+                    setError(null);
+                  }}
+                >
+                  <Info className="h-3 w-3" />
+                  <span>Holders</span>
+                </button>
+              </div>
             </div>
           </div>
 
           {/* Contract checker form */}
-          <div className="w-full max-w-xl backdrop-blur-lg bg-black/50 p-4 sm:p-6 md:p-8 rounded-2xl border border-[#ffa500]/30 shadow-xl relative z-[10] transform transition-all duration-300 hover:shadow-[0_0_50px_-12px_rgba(255,165,0,0.5)]">
-            <form onSubmit={handleCheck} className="space-y-6">
-              <div className="space-y-2 sm:space-y-3">
-                <label className="pixelify-sans block text-lg sm:text-xl font-medium text-[#ffa500] mb-2">
+          <div className="w-full backdrop-blur-lg bg-black/50 p-4 rounded-xl border border-[#ffa500]/30 shadow-xl relative z-[10]">
+            <form onSubmit={handleCheck} className="space-y-3">
+              <div className="space-y-1">
+                <label className="pixelify-sans block text-sm font-medium text-[#ffa500]">
                   CONTRACT ADDRESS
                 </label>
                 <div className="relative w-full">
@@ -378,30 +381,29 @@ function HoneyPot() {
                     value={contractAddress}
                     onChange={(e) => setContractAddress(e.target.value)}
                     disabled={isLoading}
-                    className="pixelify-sans w-full pl-10 pr-3 py-3 sm:py-4 rounded-md bg-[#111] border border-[#ffa500]/50 text-[#00ffff] focus:ring-[#ffa500] focus:border-[#ffa500] focus:outline-none focus:ring-2 text-base sm:text-lg placeholder:text-[#ffa500]/50"
+                    className="pixelify-sans w-full pl-8 pr-3 py-1.5 rounded-md bg-[#111] border border-[#ffa500]/50 text-[#00ffff] focus:ring-[#ffa500] focus:border-[#ffa500] focus:outline-none focus:ring-1 text-xs placeholder:text-[#ffa500]/50"
                     style={{
                       backgroundColor: "#111",
                       color: "#00ffff",
                       caretColor: "#ffa500",
-                      textShadow: "0 0 2px rgba(0, 0, 0, 0.5)",
                       WebkitTextFillColor: "#00ffff",
                     }}
                   />
-                  <div className="absolute left-3 top-1/2 transform -translate-y-1/2 text-[#ffa500]">
-                    <Search className="h-4 w-4 sm:h-5 sm:w-5" />
+                  <div className="absolute left-2 top-1/2 transform -translate-y-1/2 text-[#ffa500]">
+                    <Search className="h-3.5 w-3.5" />
                   </div>
                 </div>
               </div>
 
-              <div className="space-y-2 sm:space-y-3">
+              <div className="space-y-1">
                 <div className="flex justify-between items-center">
-                  <label className="pixelify-sans block text-lg sm:text-xl font-medium text-[#ffa500] mb-2">
+                  <label className="pixelify-sans block text-sm font-medium text-[#ffa500]">
                     BLOCKCHAIN NETWORK
                   </label>
 
                   {/* Auto-detect toggle */}
                   <div className="flex items-center gap-2">
-                    <span className="pixelify-sans text-sm text-[#00ffff]">
+                    <span className="pixelify-sans text-xs text-[#00ffff]">
                       Auto-detect
                     </span>
                     <label className="relative inline-flex items-center cursor-pointer">
@@ -411,7 +413,7 @@ function HoneyPot() {
                         onChange={() => setAutoDetectChain(!autoDetectChain)}
                         className="sr-only peer"
                       />
-                      <div className="w-9 h-5 bg-[#222] peer-focus:outline-none rounded-full peer peer-checked:after:translate-x-full peer-checked:after:border-white after:content-[''] after:absolute after:top-[2px] after:left-[2px] after:bg-[#ffa500] after:border-gray-300 after:border after:rounded-full after:h-4 after:w-4 after:transition-all peer-checked:bg-[#005500]"></div>
+                      <div className="w-8 h-4 bg-[#222] peer-focus:outline-none rounded-full peer peer-checked:after:translate-x-full peer-checked:after:border-white after:content-[''] after:absolute after:top-[2px] after:left-[2px] after:bg-[#ffa500] after:border-gray-300 after:border after:rounded-full after:h-3 after:w-3 after:transition-all peer-checked:bg-[#005500]"></div>
                     </label>
                   </div>
                 </div>
@@ -423,7 +425,7 @@ function HoneyPot() {
                     disabled={
                       isLoading || (autoDetectChain && isDetectingChain)
                     }
-                    className={`pixelify-sans w-full px-3 py-2 sm:py-3 rounded-md bg-[#111] border border-[#ffa500]/50 text-[#00ffff] focus:ring-[#ffa500] focus:border-[#ffa500] focus:outline-none focus:ring-2 text-base sm:text-lg ${
+                    className={`pixelify-sans w-full px-2 py-1.5 rounded-md bg-[#111] border border-[#ffa500]/50 text-[#00ffff] focus:ring-[#ffa500] focus:border-[#ffa500] focus:outline-none focus:ring-1 text-xs ${
                       autoDetectChain && isDetectingChain ? "opacity-60" : ""
                     }`}
                     style={{
@@ -442,22 +444,22 @@ function HoneyPot() {
 
                   {/* Show loading indicator when detecting */}
                   {autoDetectChain && isDetectingChain && (
-                    <div className="absolute right-3 top-1/2 transform -translate-y-1/2">
-                      <Loader2 className="h-4 w-4 animate-spin text-[#ffa500]" />
+                    <div className="absolute right-2 top-1/2 transform -translate-y-1/2">
+                      <Loader2 className="h-3.5 w-3.5 animate-spin text-[#ffa500]" />
                     </div>
                   )}
 
                   {/* Show checkmark when chain is detected */}
                   {autoDetectChain && detectedChain && !isDetectingChain && (
-                    <div className="absolute right-3 top-1/2 transform -translate-y-1/2">
-                      <CheckCircle className="h-4 w-4 text-[#00ff00]" />
+                    <div className="absolute right-2 top-1/2 transform -translate-y-1/2">
+                      <CheckCircle className="h-3.5 w-3.5 text-[#00ff00]" />
                     </div>
                   )}
                 </div>
 
                 {/* Chain detection status message */}
                 {autoDetectChain && (
-                  <div className="text-xs sm:text-sm pixelify-sans mt-1">
+                  <div className="text-[10px] pixelify-sans mt-1">
                     {isDetectingChain ? (
                       <span className="text-[#ffa500]">Detecting chain...</span>
                     ) : detectedChain ? (
@@ -477,20 +479,20 @@ function HoneyPot() {
                 )}
               </div>
 
-              <div className="pt-2">
+              <div className="pt-1">
                 <button
                   type="submit"
                   disabled={isLoading}
-                  className="pixelify-sans w-full py-3 sm:py-4 bg-black border-2 border-[#ffa500] hover:bg-[#ffa500]/10 text-[#ffa500] hover:text-[#ffcc00] rounded-xl transition-all duration-200 shadow-[0_0_10px_rgba(255,165,0,0.3)] hover:shadow-[0_0_15px_rgba(255,165,0,0.5)] text-sm sm:text-base md:text-lg"
+                  className="pixelify-sans w-full py-2 bg-black border border-[#ffa500] hover:bg-[#ffa500]/10 text-[#ffa500] hover:text-[#ffcc00] rounded-lg transition-all duration-200 shadow-[0_0_10px_rgba(255,165,0,0.3)] text-xs"
                 >
                   {isLoading ? (
-                    <div className="flex items-center justify-center gap-2 sm:gap-3">
-                      <Loader2 className="h-4 w-4 sm:h-5 sm:w-5 animate-spin" />
+                    <div className="flex items-center justify-center gap-2">
+                      <Loader2 className="h-3.5 w-3.5 animate-spin" />
                       <span>ANALYZING CONTRACT...</span>
                     </div>
                   ) : (
-                    <div className="flex items-center justify-center gap-2 sm:gap-3">
-                      <AlertTriangle className="h-4 w-4 sm:h-5 sm:w-5" />
+                    <div className="flex items-center justify-center gap-2">
+                      <AlertTriangle className="h-3.5 w-3.5" />
                       <span>CHECK {endpoint.toUpperCase()}</span>
                     </div>
                   )}
@@ -499,9 +501,9 @@ function HoneyPot() {
             </form>
 
             {error && (
-              <div className="mt-4 p-4 bg-red-500/20 border border-red-500/40 rounded-lg text-red-400 flex items-center gap-3">
-                <AlertTriangle className="h-6 w-6 flex-shrink-0" />
-                <p className="pixelify-sans text-lg">{error}</p>
+              <div className="mt-3 p-3 bg-red-500/20 border border-red-500/40 rounded-lg text-red-400 flex items-center gap-2">
+                <AlertTriangle className="h-4 w-4 flex-shrink-0" />
+                <p className="pixelify-sans text-xs">{error}</p>
               </div>
             )}
           </div>
@@ -534,62 +536,62 @@ function HoneyPot() {
           {holdersResult && !isLoading && endpoint === "holders" && (
             <TopHolders holdersResult={holdersResult} />
           )}
-        </main>
-        <div className="w-full max-w-5xl bg-black/40 backdrop-blur-md p-4 sm:p-6 rounded-xl border border-[#ffa500]/20 animate-fade-in animation-delay-200">
-          <h3 className=" text-center text-base sm:text-lg text-[#ffa500] mb-4">
-            Honeypot Scanner Stats{" "}
-          </h3>
-          <div className="grid grid-cols-2 sm:grid-cols-4 gap-2 sm:gap-4">
-            <div className="p-4 backdrop-blur-lg bg-black/40 rounded-xl border border-[#ffa500]/20 flex flex-col items-center justify-center text-center">
-              <div className="pixelify-sans text-lg sm:text-xl md:text-2xl font-bold text-[#ffa500]">
-                4M+
+          {/* Results container - will be populated by the actual check results */}
+          {!isLoading &&
+            !error &&
+            (honeypotResult ||
+              contractResult ||
+              pairsResult ||
+              holdersResult) && (
+              <div className="w-full max-h-[250px] overflow-y-auto rounded-xl border border-[#ffa500]/20 p-3 bg-black/40">
+                {/* Results will render here from the respective components */}
               </div>
-              <div className="pixelify-sans text-xs sm:text-sm text-[#ffa500]/80 mt-1">
-                Tokens Scanned
-                <span className="block text-[#ffa500]/60 text-xs">
-                  (BSC highest)
-                </span>
+            )}
+
+          <div className="w-full bg-black/40 backdrop-blur-md p-2 rounded-xl border border-[#ffa500]/20">
+            <h3 className="text-center text-xs text-[#ffa500] mb-2 pixelify-sans">
+              Honeypot Scanner Stats
+            </h3>
+            <div className="grid grid-cols-2 gap-2">
+              <div className="p-2 backdrop-blur-lg bg-black/40 rounded-lg border border-[#ffa500]/20 flex flex-col items-center justify-center text-center">
+                <div className="pixelify-sans text-base font-bold text-[#ffa500]">
+                  4M+
+                </div>
+                <div className="pixelify-sans text-[10px] text-[#ffa500]/80">
+                  Tokens Scanned
+                </div>
+              </div>
+              <div className="p-2 backdrop-blur-lg bg-black/40 rounded-lg border border-[#ffa500]/20 flex flex-col items-center justify-center text-center">
+                <div className="pixelify-sans text-base font-bold text-[#ffa500]">
+                  926K+
+                </div>
+                <div className="pixelify-sans text-[10px] text-[#ffa500]/80">
+                  NFTs Analyzed
+                </div>
+              </div>
+              <div className="p-2 backdrop-blur-lg bg-black/40 rounded-lg border border-[#ffa500]/20 flex flex-col items-center justify-center text-center">
+                <div className="pixelify-sans text-base font-bold text-[#ffa500]">
+                  6 Chains
+                </div>
+                <div className="pixelify-sans text-[10px] text-[#ffa500]/80">
+                  Protected Networks
+                </div>
+              </div>
+              <div className="p-2 backdrop-blur-lg bg-black/40 rounded-lg border border-[#ffa500]/20 flex flex-col items-center justify-center text-center">
+                <div className="pixelify-sans text-base font-bold text-[#ffa500]">
+                  5.5M+
+                </div>
+                <div className="pixelify-sans text-[10px] text-[#ffa500]/80">
+                  Wallets Flagged
+                </div>
               </div>
             </div>
-            <div className="p-4 backdrop-blur-lg bg-black/40 rounded-xl border border-[#ffa500]/20 flex flex-col items-center justify-center text-center">
-              <div className="pixelify-sans text-lg sm:text-xl md:text-2xl font-bold text-[#ffa500]">
-                926K+
-              </div>
-              <div className="pixelify-sans text-xs sm:text-sm text-[#ffa500]/80 mt-1">
-                NFTs Analyzed
-                <span className="block text-[#ffa500]/60 text-xs">
-                  (Polygon leads)
-                </span>
-              </div>
-            </div>
-            <div className="p-4 backdrop-blur-lg bg-black/40 rounded-xl border border-[#ffa500]/20 flex flex-col items-center justify-center text-center">
-              <div className="pixelify-sans text-lg sm:text-xl md:text-2xl font-bold text-[#ffa500]">
-                6 Chains
-              </div>
-              <div className="pixelify-sans text-xs sm:text-sm text-[#ffa500]/80 mt-1">
-                Actively Protected
-                <span className="block text-[#ffa500]/60 text-xs">
-                  Networks
-                </span>
-              </div>
-            </div>
-            <div className="p-4 backdrop-blur-lg bg-black/40 rounded-xl border border-[#ffa500]/20 flex flex-col items-center justify-center text-center">
-              <div className="pixelify-sans text-lg sm:text-xl md:text-2xl font-bold text-[#ffa500]">
-                5.5M+
-              </div>
-              <div className="pixelify-sans text-xs sm:text-sm text-[#ffa500]/80 mt-1">
-                Wallets Flagged
-                <span className="block text-[#ffa500]/60 text-xs">
-                  for Risk
-                </span>
-              </div>
+
+            <div className="text-xs text-[#ffa500]/60 text-center mt-2 pixelify-sans">
+              RugProofAI - Powered by Honeypot.is
             </div>
           </div>
-        </div>
-
-        <div className="text-xs text-[#00ff00]/60 text-center mt-2">
-          RugProofAI v0.1.0 - Powered by Covalent
-        </div>
+        </main>
       </div>
     </Suspense>
   );

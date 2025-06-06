@@ -1,31 +1,42 @@
-interface TokenLogoProps {
-  src: string;
+import { useState } from "react";
+
+const TokenLogo = ({
+  src,
+  alt,
+  size = 40,
+}: {
+  src?: string;
   alt: string;
   size?: number;
-}
+}) => {
+  const [error, setError] = useState(false);
 
-const TokenLogo = ({ src, alt, size = 32 }: TokenLogoProps) => {
+  if (!src || error) {
+    return (
+      <div
+        className="flex items-center justify-center bg-gradient-to-br from-black to-gray-900 border border-[#00ff00]/10 rounded-full overflow-hidden"
+        style={{ width: size, height: size }}
+      >
+        <span className={` text-lg sm:text-xl font-semibold text-[#00ff00]`}>
+          {alt?.[0]?.toUpperCase() || "?"}
+        </span>
+      </div>
+    );
+  }
+
   return (
     <div
-      className="rounded-full overflow-hidden flex items-center justify-center bg-black/30 border border-[#00ff00]/30"
+      className="relative rounded-full overflow-hidden"
       style={{ width: size, height: size }}
     >
-      {src ? (
-        <img
-          src={src}
-          alt={alt}
-          width={size}
-          height={size}
-          className="object-cover"
-          onError={(e) => {
-            (e.target as HTMLImageElement).src = "/fallback-token.png";
-          }}
-        />
-      ) : (
-        <div className="text-center text-[#00ff00] font-bold flex items-center justify-center w-full h-full">
-          {alt?.substring(0, 1) || "?"}
-        </div>
-      )}
+      <img
+        src={src}
+        alt={alt}
+        width={size}
+        height={size}
+        className="object-cover"
+        onError={() => setError(true)}
+      />
     </div>
   );
 };

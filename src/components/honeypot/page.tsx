@@ -6,9 +6,9 @@ export default function HoneypotPage() {
   return (
     <Suspense
       fallback={
-        <div className="flex min-h-screen flex-col items-center justify-center bg-black text-white">
-          <Loader2 className="h-12 w-12 animate-spin text-[#ffa500]" />
-          <p className="pixelify mt-4 text-[#ffa500]">
+        <div className="flex min-h-[600px] flex-col items-center justify-center bg-black text-white w-[420px]">
+          <Loader2 className="h-10 w-10 animate-spin text-[#ffa500]" />
+          <p className="pixelify-sans mt-4 text-[#ffa500]">
             Loading honeypot scanner...
           </p>
         </div>

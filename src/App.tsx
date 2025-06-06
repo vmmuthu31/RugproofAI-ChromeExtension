@@ -1,8 +1,7 @@
 import ScanToken from "./components/ScanToken";
-
 function App() {
   return (
-    <div>
+    <div className="relative">
       <ScanToken />
     </div>
   );
