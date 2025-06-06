@@ -75,7 +75,6 @@ function PairResult({
   );
 }
 
-// Simple helper function to get chain name from ID
 function getChainName(chainId: string): string {
   const chains: Record<string, string> = {
     "1": "ETH",

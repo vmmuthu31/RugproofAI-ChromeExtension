@@ -60,7 +60,6 @@ function TopHolders({
 
             <div className="space-y-1 max-h-[150px] overflow-y-auto">
               {holdersResult.holders.map((holder, index) => {
-                // Calculate percentage of total supply
                 const percentage =
                   (Number(holder.balance) / Number(holdersResult.totalSupply)) *
                   100;
