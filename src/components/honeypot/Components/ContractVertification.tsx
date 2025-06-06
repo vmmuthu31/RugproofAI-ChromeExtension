@@ -15,8 +15,8 @@ function ContractVertification({
   };
 }) {
   return (
-    <div className="w-full max-w-2xl mt-6 animate-fade-in">
-      <div className="p-4 sm:p-6 backdrop-blur-lg bg-black/50 rounded-2xl border border-[#ffa500]/30 shadow-[0_0_15px_rgba(255,165,0,0.2)] overflow-hidden relative">
+    <div className="w-full mt-4 animate-fade-in">
+      <div className="p-3 backdrop-blur-lg bg-black/50 rounded-xl border border-[#ffa500]/30 shadow-[0_0_10px_rgba(255,165,0,0.2)] overflow-hidden relative">
         <div className="absolute inset-0 -z-10 bg-[radial-gradient(ellipse_at_top_right,_var(--tw-gradient-stops))] from-[#ffa500]/10 via-transparent to-transparent"></div>
 
         <div className="flex items-center gap-2 mb-4 sm:mb-6">

@@ -106,16 +106,12 @@ export default function ScanToken() {
       <main className="w-full flex flex-col items-center p-4 gap-4">
         <div className="text-center space-y-2 w-full">
           <div className="absolute inset-0 -z-10 bg-[radial-gradient(ellipse_at_center,_var(--tw-gradient-stops))] from-[#00ff00]/20 via-transparent to-transparent blur-3xl"></div>
-          <h2 className="text-xl font-extrabold pixelify-sans tracking-tight bg-gradient-to-r from-[#00ff00] via-[#00ffff] to-[#ff00ff] bg-clip-text text-transparent">
-            RUGPROOFAI
-          </h2>
-          <p className="text-sm text-[#00ff00] leading-relaxed pixelify-sans">
-            Identify threats and protect your assets across{" "}
-            <span className="text-[#ff00ff] font-semibold">
-              multiple blockchains
-            </span>{" "}
-            — instantly.
-          </p>
+
+          <h1
+            className={`pixelify-sans text-3xl font-bold bg-gradient-to-r from-[#00ff00] to-[#00ffff] bg-clip-text text-transparent glow-green-sm`}
+          >
+            RugProofAI
+          </h1>
         </div>
 
         {/* Tab Navigation */}
@@ -149,6 +145,18 @@ export default function ScanToken() {
         {/* Wallet Scanner Content */}
         {activeTab === "wallet" && (
           <div className="w-full space-y-4">
+            <div>
+              <p className="text-md text-[#00ff00] leading-relaxed text-center pixelify-sans">
+                SCAN YOUR WALLET. NUKE THE THREATS.
+              </p>
+              <p className="text-sm text-center text-[#00ff00] leading-relaxed pixelify-sans">
+                Identify threats and protect your assets across{" "}
+                <span className="text-[#ff00ff] font-semibold">
+                  multiple blockchains
+                </span>{" "}
+                — instantly.
+              </p>
+            </div>
             <div className="w-full backdrop-blur-lg bg-black/50 p-4 rounded-xl border border-[#00ff00]/30 shadow-xl">
               {/* Network selector */}
               <NetworkDropdown
