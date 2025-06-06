@@ -36,7 +36,7 @@ function HoneyPotResult({
   detectedChain?: string | null;
 }) {
   return (
-    <div className="w-full max-h-[250px] overflow-y-auto">
+    <div className="w-full max-h-[450px] overflow-y-auto">
       {/* Token Summary Card */}
       <div className="p-3 backdrop-blur-lg bg-black/50 rounded-xl border border-[#ffa500]/30 shadow-[0_0_10px_rgba(255,165,0,0.2)] overflow-hidden relative">
         <div className="absolute inset-0 -z-10 bg-[radial-gradient(ellipse_at_top_right,_var(--tw-gradient-stops))] from-[#ffa500]/10 via-transparent to-transparent"></div>
@@ -160,7 +160,10 @@ function HoneyPotResult({
                 }`}
               >
                 {honeypotResult?.honeypotResult?.isHoneypot
-                  ? honeypotResult?.honeypotResult?.honeypotReason?.substring(0, 75) + "..." ||
+                  ? honeypotResult?.honeypotResult?.honeypotReason?.substring(
+                      0,
+                      75
+                    ) + "..." ||
                     "This contract has been identified as a honeypot."
                   : "This contract appears safe based on our analysis."}
               </p>

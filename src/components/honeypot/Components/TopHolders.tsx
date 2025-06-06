@@ -1,4 +1,4 @@
-import { AlertTriangle, ExternalLink, Info } from "lucide-react";
+import { AlertTriangle, Info } from "lucide-react";
 
 function TopHolders({
   holdersResult,
@@ -14,26 +14,26 @@ function TopHolders({
   };
 }) {
   return (
-    <div className="w-full max-w-2xl mt-6 animate-fade-in">
-      <div className="p-4 sm:p-6 backdrop-blur-lg bg-black/50 rounded-2xl border border-[#ffa500]/30 shadow-[0_0_15px_rgba(255,165,0,0.2)] overflow-hidden relative">
+    <div className="w-full max-h-[450px] overflow-y-auto">
+      <div className="p-3 backdrop-blur-lg bg-black/50 rounded-xl border border-[#ffa500]/30 shadow-[0_0_10px_rgba(255,165,0,0.2)] overflow-hidden relative">
         <div className="absolute inset-0 -z-10 bg-[radial-gradient(ellipse_at_top_right,_var(--tw-gradient-stops))] from-[#ffa500]/10 via-transparent to-transparent"></div>
 
-        <div className="flex items-center gap-2 mb-4 sm:mb-6">
-          <div className="h-8 w-8 sm:h-10 sm:w-10 rounded-lg bg-[#ffa500]/10 flex items-center justify-center">
-            <Info className="h-5 w-5 sm:h-6 sm:w-6 text-[#ffa500]" />
+        <div className="flex items-center gap-2 mb-2">
+          <div className="h-6 w-6 rounded-lg bg-[#ffa500]/10 flex items-center justify-center">
+            <Info className="h-3.5 w-3.5 text-[#ffa500]" />
           </div>
-          <h3 className="pixelify-sans text-lg sm:text-xl md:text-2xl font-bold text-[#ffa500]">
-            TOP TOKEN HOLDERS
+          <h3 className="text-sm font-bold text-[#ffa500] pixelify-sans">
+            TOP HOLDERS
           </h3>
         </div>
 
-        <div className="mb-4">
-          <div className="p-2 sm:p-3 bg-black/50 rounded-lg border border-[#ffa500]/20 mb-2">
+        <div className="mb-2">
+          <div className="p-2 bg-black/50 rounded-lg border border-[#ffa500]/20 mb-2">
             <div className="flex justify-between items-center">
-              <span className="pixelify-sans text-sm text-[#ffa500]">
+              <span className="pixelify-sans text-xs text-[#ffa500]">
                 Total Supply:
               </span>
-              <span className="pixelify-sans text-sm text-[#00ffff]">
+              <span className="pixelify-sans text-xs text-[#00ffff]">
                 {BigInt(holdersResult.totalSupply).toLocaleString()} tokens
               </span>
             </div>
@@ -41,98 +41,76 @@ function TopHolders({
         </div>
 
         {holdersResult.holders.length === 0 ? (
-          <div className="p-6 text-center">
-            <AlertTriangle className="h-12 w-12 mx-auto mb-3 text-[#ffa500]" />
-            <h4 className="pixelify-sans text-lg font-medium text-[#ffa500] mb-2">
+          <div className="p-3 text-center">
+            <AlertTriangle className="h-6 w-6 mx-auto mb-2 text-[#ffa500]" />
+            <h4 className="pixelify-sans text-xs font-medium text-[#ffa500] mb-1">
               NO HOLDERS FOUND
             </h4>
-            <p className="pixelify-sans text-base text-[#00ffff]">
+            <p className="pixelify-sans text-[10px] text-[#00ffff]">
               No token holders were found for this token on the selected chain.
             </p>
           </div>
         ) : (
-          <div className="space-y-4">
-            <div className="overflow-x-auto">
-              <table className="w-full text-sm">
-                <thead>
-                  <tr className="border-b border-[#ffa500]/30">
-                    <th className="pixelify-sans text-left p-3 text-[#ffa500] text-base sm:text-lg">
-                      Address
-                    </th>
-                    <th className="pixelify-sans text-right p-3 text-[#ffa500] text-base sm:text-lg">
-                      Balance
-                    </th>
-                    <th className="pixelify-sans text-center p-3 text-[#ffa500] text-base sm:text-lg">
-                      Type
-                    </th>
-                  </tr>
-                </thead>
-                <tbody>
-                  {holdersResult.holders.map((holder, index) => {
-                    const holderBalance = BigInt(holder.balance);
-                    const totalSupply = BigInt(holdersResult.totalSupply);
-                    const percentage =
-                      totalSupply > 0
-                        ? Number(
-                            (holderBalance * BigInt(10000)) / totalSupply
-                          ) / 100
-                        : 0;
-
-                    return (
-                      <tr
-                        key={holder.address}
-                        className={`${
-                          index % 2 === 0 ? "bg-black/30" : "bg-black/50"
-                        } hover:bg-[#ffa500]/10 transition-colors`}
-                      >
-                        <td className="pixelify-sans p-3 text-[#00ffff] text-base">
-                          <a
-                            href={`https://etherscan.io/address/${holder.address}`}
-                            target="_blank"
-                            rel="noopener noreferrer"
-                            className="hover:text-[#00ffff] flex items-center gap-1"
-                          >
-                            {holder.address}
-                            <ExternalLink className="inline-block h-4 w-4" />
-                          </a>
-                          {holder.alias && (
-                            <span className="text-sm text-[#ff00ff]">
-                              {holder.alias}
-                            </span>
-                          )}
-                        </td>
-                        <td className="pixelify-sans p-3 text-right text-[#00ffff] text-base">
-                          <div>{holderBalance.toLocaleString()}</div>
-                          <div className="text-sm text-[#00ffaa]">
-                            {percentage.toFixed(2)}%
-                          </div>
-                        </td>
-                        <td className="pixelify-sans p-3 text-center">
-                          {holder.isContract ? (
-                            <span className="px-3 py-1 bg-[#ff00ff]/10 text-[#ff00ff] rounded-full text-sm">
-                              Contract
-                            </span>
-                          ) : (
-                            <span className="px-3 py-1 bg-[#00ff00]/10 text-[#00ff00] rounded-full text-sm">
-                              Wallet
-                            </span>
-                          )}
-                        </td>
-                      </tr>
-                    );
-                  })}
-                </tbody>
-              </table>
+          <div className="space-y-2">
+            <div className="grid grid-cols-[1fr_auto_auto] gap-2 p-2 bg-[#ffa500]/10 rounded-lg text-[10px] text-[#ffa500] font-medium">
+              <div className="pixelify-sans">Address</div>
+              <div className="pixelify-sans text-right">Balance</div>
+              <div className="pixelify-sans text-center">%</div>
             </div>
 
-            <div className="p-3 sm:p-4 bg-[#ffaa00]/10 rounded-xl border border-[#ffaa00]/30">
-              <div className="flex gap-3 items-start">
-                <Info className="h-5 w-5 text-[#ffaa00] flex-shrink-0 mt-0.5" />
-                <p className="pixelify-sans text-sm sm:text-base text-[#ffaa00]">
-                  This endpoint shows up to 50 top holders. Premium API access
-                  allows retrieving more holders.
-                </p>
-              </div>
+            <div className="space-y-1 max-h-[150px] overflow-y-auto">
+              {holdersResult.holders.map((holder, index) => {
+                // Calculate percentage of total supply
+                const percentage =
+                  (Number(holder.balance) / Number(holdersResult.totalSupply)) *
+                  100;
+
+                return (
+                  <div
+                    key={index}
+                    className={`grid grid-cols-[1fr_auto_auto] gap-2 p-2 rounded-lg ${
+                      holder.isContract
+                        ? "bg-[#ff0000]/10 border border-[#ff0000]/20"
+                        : "bg-black/50 border border-[#ffa500]/20"
+                    }`}
+                  >
+                    <div className="truncate font-mono text-[10px] text-[#00ffff] flex items-center">
+                      <span className="truncate">
+                        {holder.alias ||
+                          holder.address.substring(0, 8) +
+                            "..." +
+                            holder.address.substring(36)}
+                      </span>
+
+                      {holder.isContract && (
+                        <span className="ml-1 px-1 py-0.5 bg-[#ff0000]/20 text-[#ff0000] rounded text-[8px]">
+                          CONTRACT
+                        </span>
+                      )}
+                    </div>
+
+                    <div className="text-right text-[10px] text-[#00ffff] whitespace-nowrap">
+                      {Number(holder.balance).toLocaleString()}
+                    </div>
+
+                    <div
+                      className={`text-center text-[10px] ${
+                        percentage > 5 ? "text-[#ff0000]" : "text-[#00ff00]"
+                      }`}
+                    >
+                      {percentage.toFixed(1)}%
+                    </div>
+                  </div>
+                );
+              })}
+            </div>
+
+            <div className="p-2 bg-[#ffaa00]/10 border border-[#ffaa00]/30 rounded-lg flex items-start text-[10px]">
+              <Info className="h-3 w-3 text-[#ffaa00] mr-1 flex-shrink-0 mt-0.5" />
+              <p className="text-[#ffaa00]">
+                Large token holders (whales) could impact price through selling.
+                Contracts might be locked liquidity or staking.
+              </p>
             </div>
           </div>
         )}
