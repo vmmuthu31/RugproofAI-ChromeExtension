@@ -17,7 +17,8 @@ export const supportedChains: ChainInfo[] = [
     name: "Polygon",
     explorer: "https://polygonscan.com",
     type: "Mainnet",
-    logoUrl: "https://www.datocms-assets.com/86369/1669653893-matic.svg",
+    logoUrl:
+      "https://altcoinsbox.com/wp-content/uploads/2023/03/matic-logo.png",
     category: "EVM",
   },
   {
@@ -25,7 +26,8 @@ export const supportedChains: ChainInfo[] = [
     name: "BNB Smart Chain",
     explorer: "https://bscscan.com",
     type: "Mainnet",
-    logoUrl: "https://www.datocms-assets.com/86369/1669653889-bnb.svg",
+    logoUrl:
+      "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQP9cUvoCvmCXO4pNHvnREHBCKW30U-BVxKfg&s",
     category: "EVM",
   },
   {
@@ -33,7 +35,8 @@ export const supportedChains: ChainInfo[] = [
     name: "Avalanche C-Chain",
     explorer: "https://snowtrace.io",
     type: "Mainnet",
-    logoUrl: "https://www.datocms-assets.com/86369/1669653888-avax.svg",
+    logoUrl:
+      "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRCDzBzv0xelHUJFWzZ47s3lAcxBmAMc7uNUg&s",
     category: "EVM",
   },
   {
@@ -41,7 +44,8 @@ export const supportedChains: ChainInfo[] = [
     name: "Arbitrum",
     explorer: "https://arbiscan.io",
     type: "Mainnet",
-    logoUrl: "https://www.datocms-assets.com/86369/1674587647-arb1.svg",
+    logoUrl:
+      "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcR6mQ1pwxVT3lqCTZWhuUZzKTOqT0ZmYh2oeg&s",
     category: "EVM",
   },
 ];

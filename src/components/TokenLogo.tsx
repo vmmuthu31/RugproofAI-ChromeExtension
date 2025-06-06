@@ -11,14 +11,17 @@ const TokenLogo = ({
 }) => {
   const [error, setError] = useState(false);
 
-  if (!src || error) {
+  if (!src || src === "" || error) {
+    const firstLetter =
+      alt && typeof alt === "string" ? alt.charAt(0).toUpperCase() : "?";
+
     return (
       <div
         className="flex items-center justify-center bg-gradient-to-br from-black to-gray-900 border border-[#00ff00]/10 rounded-full overflow-hidden"
         style={{ width: size, height: size }}
       >
-        <span className={` text-lg sm:text-xl font-semibold text-[#00ff00]`}>
-          {alt?.[0]?.toUpperCase() || "?"}
+        <span className="text-base font-semibold text-[#00ff00]">
+          {firstLetter}
         </span>
       </div>
     );
