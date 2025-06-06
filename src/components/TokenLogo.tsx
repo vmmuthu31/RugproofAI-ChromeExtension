@@ -1,5 +1,3 @@
-"use client";
-
 interface TokenLogoProps {
   src: string;
   alt: string;

@@ -1,8 +1,7 @@
 /* eslint-disable @typescript-eslint/no-explicit-any */
-"use client";
 import { GoldRushClient } from "@covalenthq/client-sdk";
 import type { Chain } from "@covalenthq/client-sdk";
-import { ChainInfo, GoldRushResponse } from "../types";
+import type { ChainInfo, GoldRushResponse } from "../types";
 
 export const supportedChains: ChainInfo[] = [
   {
@@ -76,7 +75,7 @@ const fetchGoldRushData = async (
 ): Promise<GoldRushResponse> => {
   try {
     const chain = getChainFormatted(chainId);
-    let apiKey = process.env.NEXT_PUBLIC_GOLDRUSH_API_KEY || "";
+    let apiKey = import.meta.env.VITE_GOLDRUSH_API_KEY || "";
 
     if (typeof window !== "undefined" && "chrome" in window) {
       try {

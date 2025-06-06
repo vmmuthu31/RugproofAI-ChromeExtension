@@ -1,5 +1,11 @@
+import ScanToken from "./components/ScanToken";
+
 function App() {
-  return <></>;
+  return (
+    <div>
+      <ScanToken />
+    </div>
+  );
 }
 
 export default App;
