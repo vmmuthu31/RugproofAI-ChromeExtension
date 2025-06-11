@@ -1,54 +1,85 @@
-# React + TypeScript + Vite
+# RugProofAI - Crypto Token Safety Scanner
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+![RugProofAI Logo](/public/logo.png)
 
-Currently, two official plugins are available:
+## Overview
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+RugProofAI is a browser extension that helps protect crypto users from scams, rugpulls, and malicious tokens. The extension allows you to scan wallet addresses for potentially harmful tokens and analyze smart contracts for honeypot characteristics across multiple blockchain networks.
 
-## Expanding the ESLint configuration
+## Features
 
-If you are developing a production application, we recommend updating the configuration to enable type-aware lint rules:
+### Wallet Scanner
 
-```js
-export default tseslint.config({
-  extends: [
-    // Remove ...tseslint.configs.recommended and replace with this
-    ...tseslint.configs.recommendedTypeChecked,
-    // Alternatively, use this for stricter rules
-    ...tseslint.configs.strictTypeChecked,
-    // Optionally, add this for stylistic rules
-    ...tseslint.configs.stylisticTypeChecked,
-  ],
-  languageOptions: {
-    // other options...
-    parserOptions: {
-      project: ['./tsconfig.node.json', './tsconfig.app.json'],
-      tsconfigRootDir: import.meta.dirname,
-    },
-  },
-})
+- Scan any wallet address for spam and malicious tokens
+- Filter tokens by safety status (safe/spam)
+- Search functionality for finding specific tokens
+- Supports multiple blockchain networks:
+  - Ethereum
+  - Polygon
+  - BNB Smart Chain
+  - Avalanche C-Chain
+  - Arbitrum
+
+### Honeypot Scanner
+
+- Analyze token contracts for potential rugpull indicators
+- Contract verification status checking
+- Pair analysis for liquidity and trading status
+- Top holders analysis to detect concentrated ownership
+
+## Technology Stack
+
+- **Frontend**: React 19, TypeScript, TailwindCSS
+- **Build Tool**: Vite
+- **Data Provider**: Covalent API (@covalenthq/client-sdk)
+- **UI Components**: Custom components with Lucide icons
+- **Extension Framework**: Chrome Extension Manifest V3
+
+## Development
+
+### Prerequisites
+
+- Node.js (latest LTS recommended)
+- Bun package manager
+
+### Setup
+
+1. Clone the repository
+
+```bash
+git clone https://github.com/vmmuthu31/RugproofAI-ChromeExtension
+cd rugproofextension
 ```
 
-You can also install [eslint-plugin-react-x](https://github.com/Rel1cx/eslint-react/tree/main/packages/plugins/eslint-plugin-react-x) and [eslint-plugin-react-dom](https://github.com/Rel1cx/eslint-react/tree/main/packages/plugins/eslint-plugin-react-dom) for React-specific lint rules:
+2. Install dependencies
 
-```js
-// eslint.config.js
-import reactX from 'eslint-plugin-react-x'
-import reactDom from 'eslint-plugin-react-dom'
-
-export default tseslint.config({
-  plugins: {
-    // Add the react-x and react-dom plugins
-    'react-x': reactX,
-    'react-dom': reactDom,
-  },
-  rules: {
-    // other rules...
-    // Enable its recommended typescript rules
-    ...reactX.configs['recommended-typescript'].rules,
-    ...reactDom.configs.recommended.rules,
-  },
-})
+```bash
+bun install
 ```
+
+3. Start the development server
+
+```bash
+bun run dev
+```
+
+4. Build for production
+
+```bash
+bun run build
+```
+
+### Loading the Extension in Chrome
+
+1. Build the extension
+2. Open Chrome and navigate to `chrome://extensions/`
+3. Enable "Developer mode" (toggle in the top-right corner)
+4. Click "Load unpacked" and select the `build` directory
+
+## Contributing
+
+Contributions are welcome! Please feel free to submit a Pull Request.
+
+## License
+
+This project is licensed under the MIT License - see the [LICENSE](LICENSE) file for details.
